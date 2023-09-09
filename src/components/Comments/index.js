@@ -89,39 +89,45 @@ class Comments extends Component {
     const {nameInput, commentInput, commentsList} = this.state
 
     return (
-      <div className="container">
+      <>
         <h1 className="head">Comments</h1>
-        <div className="inputs-container">
-          <form className="form" onSubmit={this.addNewComment}>
-            <p className="side-head">Say something about 4.0 Technologies</p>
-            <input
-              className="name-input"
-              type="text"
-              placeholder="Your Name"
-              value={nameInput}
-              onChange={this.changeNameInput}
+        <div className="container">
+          <div className="inputs-container">
+            <form className="form" onSubmit={this.addNewComment}>
+              <p className="side-head">Say something about 4.0 Technologies</p>
+              <input
+                className="name-input"
+                type="text"
+                placeholder="Your Name"
+                value={nameInput}
+                onChange={this.changeNameInput}
+              />
+              <textarea
+                className="comment-input"
+                placeholder="Your Comment"
+                value={commentInput}
+                onChange={this.changeCommentInput}
+              />
+              <button type="submit" className="submit-button">
+                Add Comment
+              </button>
+            </form>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+              alt="comments"
+              className="comment-image"
             />
-            <textarea
-              className="comment-input"
-              placeholder="Your Comment"
-              value={commentInput}
-              onChange={this.changeCommentInput}
-            />
-            <button type="submit" className="submit-button">
-              Add Comment
-            </button>
-          </form>
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
-            alt="comments"
-          />
+          </div>
+          <hr />
         </div>
-        <hr />
-        <p className="comment-class">
-          <span className="count-container">{commentsList.length}</span>Comments
-        </p>
-        <ul>{this.renderCommentsList()}</ul>
-      </div>
+        <div className="ul-container">
+          <p className="comment-class">
+            <span className="count-container">{commentsList.length}</span>
+            Comments
+          </p>
+          <ul>{this.renderCommentsList()}</ul>
+        </div>
+      </>
     )
   }
 }
