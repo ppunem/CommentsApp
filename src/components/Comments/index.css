@@ -2,20 +2,21 @@
 * {
   font-family: 'roboto';
 }
+.outer {
+  padding: 25px;
+}
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+  width: 100%;
 }
 .head {
   font-weight: bold;
   text-align: start;
-  margin-left: 25%;
 }
 .inputs-container {
   display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 form {
   display: flex;
@@ -25,10 +26,11 @@ form {
 .side-head {
   font-size: 12px;
   color: #1e293b;
+  margin-top: 40px;
 }
 .name-input {
   border-color: #cbd2d9;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-style: solid;
 }
 .comment-input {
@@ -37,13 +39,13 @@ form {
   width: 220px;
   height: 100px;
   border-style: solid;
+  margin-bottom: 15px;
 }
 .submit-button {
   background-color: blue;
   color: #ffffff;
   padding: 3px;
   border: none;
-  border-radius: 12px;
   width: 100px;
   margin-top: 5px;
 }
@@ -64,11 +66,12 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   padding: 15px;
+  margin-left: 0%;
 }
 hr {
-  width: 75%;
+  width: 100%;
   border: 1px solid#cbd2d9;
 }
 .ul-container {
@@ -76,7 +79,6 @@ hr {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 15px;
-  margin-left: 23%;
 }
 .comment-image {
   margin-left: 60px;

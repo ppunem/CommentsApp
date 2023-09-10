@@ -3,7 +3,7 @@ import {formatDistanceToNow} from 'date-fns'
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails, onDelete, onLike} = props
+  const {commentDetails, deleteComment, likedComment} = props
   const {id, name, comment, isLiked, date, letterClassName} = commentDetails
   const likeImage = !isLiked
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
@@ -11,41 +11,43 @@ const CommentItem = props => {
   const LIKE = isLiked ? 'like-like' : ''
 
   const delComment = () => {
-    onDelete(id)
+    deleteComment(id)
   }
 
-  const likeComment = () => {
-    onLike(id)
+  const onlike = () => {
+    likedComment(id)
   }
 
   return (
-    <li className="main-container">
-      <div className="name-time">
-        <div className={letterClassName}>{name.slice(0, 1)}</div>
-        <p className="Name">{name}</p>
-        <p className="time">{formatDistanceToNow(date)}</p>
-      </div>
-      <p className="Comment">{comment}</p>
-      <div className="like-del-container">
-        <div className="like-container">
-          <img src={likeImage} alt="like" />
-          <button
-            className={`like-button ${LIKE}`}
-            type="button"
-            onClick={likeComment}
-          >
-            Like
+    <li>
+      <div className="container">
+        <div className="name-time">
+          <div className={letterClassName}>{name.slice(0, 1)}</div>
+          <p className="Name">{name}</p>
+          <p className="time">{formatDistanceToNow(date)}</p>
+        </div>
+        <p className="Comment">{comment}</p>
+        <div className="like-del-container">
+          <div className="like-container">
+            <img src={likeImage} alt="like" />
+            <button
+              className={`like-button ${LIKE}`}
+              type="button"
+              onClick={onlike}
+            >
+              Like
+            </button>
+          </div>
+          <button className="del-button" type="button" onClick={delComment}>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
+              data-testid="delete"
+              alt="delete"
+            />
           </button>
         </div>
-        <button className="del-button" type="button" onClick={delComment}>
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
-            data-testid="delete"
-            alt=""
-          />
-        </button>
+        <hr />
       </div>
-      <hr />
     </li>
   )
 }

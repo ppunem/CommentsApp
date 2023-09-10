@@ -21,9 +21,7 @@ class Comments extends Component {
     const {nameInput, commentInput} = this.state
     const firstLetterBackgroundColor = `letter-container ${
       initialContainerBackgroundClassNames[
-        Math.Floor(
-          Math.random() * initialContainerBackgroundClassNames.length - 1,
-        )
+        Math.floor(Math.random() * initialContainerBackgroundClassNames.length)
       ]
     }`
 
@@ -51,19 +49,16 @@ class Comments extends Component {
     this.setState({commentInput: event.target.value})
   }
 
-  deleteComment = commentId => {
+  deleteComment = id => {
     const {commentsList} = this.state
     this.setState({
-      commentsList: commentsList.filter(
-        eachComment => eachComment.id !== commentId,
-      ),
+      commentsList: commentsList.filter(eachComment => eachComment.id !== id),
     })
   }
 
   likedComment = id => {
-    const {commentsList} = this.state
     this.setState(prevState => ({
-      commentsList: commentsList.map(eachComment => {
+      commentsList: prevState.commentsList.map(eachComment => {
         if (eachComment.id === id) {
           return {...eachComment, isLiked: !prevState.isLiked}
         }
@@ -79,8 +74,8 @@ class Comments extends Component {
       <CommentItem
         key={eachComment.id}
         commentDetails={eachComment}
-        onDelete={this.deleteComment}
-        onLike={this.likedComment}
+        deleteComment={this.deleteComment}
+        likedComment={this.likedComment}
       />
     ))
   }
@@ -89,7 +84,7 @@ class Comments extends Component {
     const {nameInput, commentInput, commentsList} = this.state
 
     return (
-      <>
+      <div className="outer">
         <h1 className="head">Comments</h1>
         <div className="container">
           <div className="inputs-container">
@@ -125,9 +120,9 @@ class Comments extends Component {
             <span className="count-container">{commentsList.length}</span>
             Comments
           </p>
-          <ul>{this.renderCommentsList()}</ul>
         </div>
-      </>
+        <ul>{this.renderCommentsList()}</ul>
+      </div>
     )
   }
 }
